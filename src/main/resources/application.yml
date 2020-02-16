@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost/pharmacy?createDatabaseIfNotExist=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    platform: org.hibernate.dialect.MySQL57Dialect
+    username: admin
+    password: Admin@1234
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+server:
+  port: 8081
