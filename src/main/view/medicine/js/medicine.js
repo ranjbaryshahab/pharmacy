@@ -1,3 +1,13 @@
+function showSpinner() {
+    const spinnerBox = document.getElementById('mySpinner');
+    spinnerBox.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"> </span>';
+}
+
+function hideSpinner() {
+    const spinnerBox = document.getElementById('mySpinner');
+    spinnerBox.innerHTML = '';
+}
+
 function saveMedicine() {
     const medicineName = $("#addMedicineName").val();
     const price = $("#addPrice").val();
@@ -20,6 +30,7 @@ function saveMedicine() {
 
             const x = document.getElementById("alert");
             if (window.getComputedStyle(x).visibility === "hidden") {
+                x.innerHTML = "Medicine was added !";
                 x.style.visibility = "visible";
             }
 
@@ -29,17 +40,6 @@ function saveMedicine() {
     http.open('GET', url, true);
     http.send();
 
-}
-
-
-function showSpinner() {
-    const spinnerBox = document.getElementById('mySpinner');
-    spinnerBox.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"> </span>';
-}
-
-function hideSpinner() {
-    const spinnerBox = document.getElementById('mySpinner');
-    spinnerBox.innerHTML = '';
 }
 
 function loadMedicinesAjax() {
@@ -132,7 +132,13 @@ function deleteMedicine() {
 
     http.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
+
             $("#deleteModal").modal('hide');
+            const x = document.getElementById("alert");
+            if (window.getComputedStyle(x).visibility === "hidden") {
+                x.innerHTML = "Medicine (" + id + ") was deleted !";
+                x.style.visibility = "visible";
+            }
             loadMedicinesAjax();
         }
     };

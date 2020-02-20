@@ -1,5 +1,8 @@
 package ir.maktab.java32.projects.springboot.pharmacy.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,6 +22,9 @@ public class Prescription {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "PRESCRIPTION_ID")
+    private String prescriptionId;
+
     @Temporal(TemporalType.DATE)
     @Column(name = "ISSUE_DATE")
     private Date issueDate;
@@ -27,7 +33,4 @@ public class Prescription {
     @Column(name = "PATIENT_REFERRAL_DATE")
     private Date patientReferralDate;
 
-    @ManyToOne
-    @JoinColumn(name = "PATIENT_ID")
-    private Patient patient;
 }
